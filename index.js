@@ -393,4 +393,6 @@ if (!nativeBinding) {
 }
 
 module.exports = nativeBinding
-module.exports.plus100 = nativeBinding.plus100
+module.exports.deletePassword = nativeBinding.deletePassword
+module.exports.getPassword = nativeBinding.getPassword
+module.exports.setPassword = nativeBinding.setPassword

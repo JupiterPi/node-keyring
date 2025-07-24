@@ -12,7 +12,7 @@ pub fn set_password(service: String, account: String, password: String) -> napi:
     Ok(())
   })()
   .map_err(|e: keyring::Error| {
-    napi::Error::from_reason(format!("Error trying to set keyring entry: {}", e))
+    napi::Error::from_reason(format!("Error trying to set keyring entry: {e}"))
   })
 }
 
@@ -25,7 +25,7 @@ pub fn get_password(service: String, account: String) -> napi::Result<String> {
     Ok(password)
   })()
   .map_err(|e: keyring::Error| {
-    napi::Error::from_reason(format!("Error trying to get keyring entry: {}", e))
+    napi::Error::from_reason(format!("Error trying to get keyring entry: {e}"))
   })
 }
 
@@ -38,6 +38,6 @@ pub fn delete_password(service: String, account: String) -> napi::Result<()> {
     Ok(())
   })()
   .map_err(|e: keyring::Error| {
-    napi::Error::from_reason(format!("Error trying to delete keyring entry: {}", e))
+    napi::Error::from_reason(format!("Error trying to delete keyring entry: {e}"))
   })
 }

@@ -35,6 +35,8 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
+      - name: Install Linux system dependencies
+        run: sudo apt install libdbus-1-dev pkg-config
       - name: Install dependencies
         run: yarn install
       - name: Oxlint
@@ -112,6 +114,9 @@ jobs:
         run: ${{ matrix.settings.setup }}
         if: ${{ matrix.settings.setup }}
         shell: bash
+      - name: Install Linux system dependencies
+        run: sudo apt install libdbus-1-dev pkg-config
+        if: ${{ matrix.host == 'ubuntu-latest' }}
       - name: Install dependencies
         run: yarn install
       - name: Build

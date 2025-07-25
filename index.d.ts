@@ -4,7 +4,7 @@
 export declare function deletePassword(service: string, account: string): void
 
 /** Get a password from the keyring for a given service and account. */
-export declare function getPassword(service: string, account: string): string
+export declare function getPassword(service: string, account: string): string | null
 
 /** Set a password in the keyring for a given service and account. */
 export declare function setPassword(service: string, account: string, password: string): void

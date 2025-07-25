@@ -18,11 +18,14 @@ pub fn set_password(service: String, account: String, password: String) -> napi:
 
 /// Get a password from the keyring for a given service and account.
 #[napi]
-pub fn get_password(service: String, account: String) -> napi::Result<String> {
+pub fn get_password(service: String, account: String) -> napi::Result<Option<String>> {
   (|| {
     let entry = Entry::new(&service, &account)?;
-    let password = entry.get_password()?;
-    Ok(password)
+    if let Ok(password) = entry.get_password() {
+      Ok(Some(password))
+    } else {
+      Ok(None)
+    }
   })()
   .map_err(|e: keyring::Error| {
     napi::Error::from_reason(format!("Error trying to get keyring entry: {e}"))

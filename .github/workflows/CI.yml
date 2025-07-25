@@ -115,7 +115,7 @@ jobs:
         if: ${{ matrix.settings.setup }}
         shell: bash
       - name: Install Linux system dependencies
-        run: sudo apt install libdbus-1-dev pkg-config
+        run: sudo apt update && sudo apt install -y libdbus-1-dev pkg-config
         if: ${{ matrix.settings.host == 'ubuntu-latest' }}
       - name: Install dependencies
         run: yarn install

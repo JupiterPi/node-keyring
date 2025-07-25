@@ -116,7 +116,7 @@ jobs:
         shell: bash
       - name: Install Linux system dependencies
         run: sudo apt install libdbus-1-dev pkg-config
-        if: ${{ matrix.host == 'ubuntu-latest' }}
+        if: ${{ matrix.settings.host == 'ubuntu-latest' }}
       - name: Install dependencies
         run: yarn install
       - name: Build
